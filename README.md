@@ -1,7 +1,7 @@
 ---
-description: Git book을 적극 활용해보자.
+description: 메가테라 프론트엔드 1주차 강의 노트
 ---
 
-# Git Book 가이드
+# Intro
 
-:thumbsup: git book 사용기
+:thumbsup: 메가테라 프론트엔드 1주차 강의 노트입니다.
