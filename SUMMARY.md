@@ -1,12 +1,12 @@
-‌# Table of contents
+## Intro
 
-## GitBook
+* 메가테라 프론트엔드 1주차 강의 노트
 
-* [Git Book 가이드](README.md)
+* [Git training](git-training.md)
 
-* [GitHub과 연동하기](/integration/integration-with-github.md)
-    * [PR 날리기](/integration/pull-request.md)
-
-## 효과적인 학습법
-
-* [미라클 모닝](miracle-morning.md)
+* [1주차](/week1/goal.md)
+    * [개발환경](/week1/setting.md)
+    * [TypeScript](/week1/typescript.md)
+    * [React](/week1/react.md)
+    * [Testing Library](/week1/testing-library.md)
+    * [Parcel & ESLint](/week1/parcel-eslint.md)
