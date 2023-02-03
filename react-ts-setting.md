@@ -7,6 +7,9 @@ Node.js 가 최신 버전인지 확인한다. <br/>
 터미널을 켠다.
 
 ---
+
+<br />
+
 ### 1. 작업 폴더 생성
 ```bash
 mkdir my-app
@@ -14,11 +17,17 @@ mkdir my-app
 cd my-app
 ```
 ---
+
+<br />
+
 ### 2. VS code 켜기
 ```bash
 code .
 ```
 ---
+
+<br />
+
 ### 3. npm 프로젝트 생성
 ```bash
 npm init -y
@@ -314,12 +323,18 @@ touch .eslintignore
 ```
 
 ---
+
+<br />
+
 ### 7. React 설치
 ```bash
 npm i react react-dom
 npm i -D @types/react @types/react-dom
 ```
 ---
+
+<br />
+
 ### 8. 테스팅 도구 설치
 ```bash
 npm i -D jest @types/jest @swc/core @swc/jest \
@@ -330,6 +345,8 @@ npm i -D jest @types/jest @swc/core @swc/jest \
 - jest랑 swc를 같이 쓰는게 목표
 
 ---
+
+<br />
 
 ### 9. jest.config.js 파일 작성
 - 테스트에서 SWC를 사용한다.
@@ -365,6 +382,8 @@ module.exports = {
 
 ---
 
+<br />
+
 ### 10. Parcel 설치
 ```bash
 npm i -D parcel
@@ -374,6 +393,8 @@ npm i -D parcel
 - 진입 파일을 지정하자.
 
 ---
+
+<br />
 
 ### 11. package.json 수정
 프로젝트를 실행하는 명령어를 작성해준다.
@@ -451,6 +472,8 @@ node 의 경우 처음 실행하는게 main으로 잡아주고 있음
 
 ---
 
+<br />
+
 ### 12. 기본 코드 작성
 - `index.html`
 ```html
@@ -486,12 +509,17 @@ if (element) {
 
 ---
 
+<br />
+
 ### 13. 실행
 
 **웹 서버 실행**
 ```bash
 npm start
 ```
+웹 브라우저로 확인: http://localhost:8080/
+
+<br />
 
 **eslint 실행**
 ```bash
