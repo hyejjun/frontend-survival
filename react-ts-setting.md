@@ -1,6 +1,6 @@
 # React + TypeScript + Parcel + ESLint 프론트엔드 개발환경 세팅
 
-Node.js 가 최신 버전인지 확인한다. <br/>
+Node.js 가 최신 버전인지 확인한다. 
 
 ---
 
@@ -16,6 +16,9 @@ mkdir my-app
 
 cd my-app
 ```
+
+<br />
+
 ---
 
 <br />
@@ -24,6 +27,9 @@ cd my-app
 ```bash
 code .
 ```
+
+<br />
+
 ---
 
 <br />
@@ -32,7 +38,12 @@ code .
 ```bash
 npm init -y
 ```
-#
+<br />
+
+---
+
+<br />
+
 ### 4. .gitignore 생성
 ```bash
 touch .gitignore
@@ -207,6 +218,8 @@ npx tsc --init
 - jsx 속성을 변경한다.
 - 16번째 줄에 "jsx": "react-jsx", 로 변경하고 활성화 시킨다.
 
+<br />
+
 ---
 
 <br/>
@@ -322,6 +335,8 @@ touch .eslintignore
 /.parcel-cache/
 ```
 
+<br />
+
 ---
 
 <br />
@@ -331,6 +346,9 @@ touch .eslintignore
 npm i react react-dom
 npm i -D @types/react @types/react-dom
 ```
+
+<br />
+
 ---
 
 <br />
@@ -343,6 +361,8 @@ npm i -D jest @types/jest @swc/core @swc/jest \
 ```
 - jest 라는 테스팅 도구 설치
 - jest랑 swc를 같이 쓰는게 목표
+
+<br />
 
 ---
 
@@ -380,6 +400,8 @@ module.exports = {
 
 ```
 
+<br />
+
 ---
 
 <br />
@@ -391,6 +413,8 @@ npm i -D parcel
 - web / dev 서버를 띄우는 도구
 - Parcel 은 파일 변화를 자동으로 다시 빌드(rebuild) 하고 빠른 모듈 교체를 지원하는 내장 개발용 서버가 있어 빠른 개발이 가능하기에 사용.
 - 진입 파일을 지정하자.
+
+<br />
 
 ---
 
@@ -506,6 +530,8 @@ if (element) {
 	root.render(<App />);
 }
 ```
+
+<br />
 
 ---
 
