@@ -1,8 +1,9 @@
+# Table of contents
+
+* [README](README.md)
+
 ## Intro
 
-* 메가테라 프론트엔드 1주차 강의 노트
-
-* [Git training](git-training.md)
 
 * [1주차](/week1/goal.md)
     * [개발환경](/week1/setting.md)
@@ -13,3 +14,4 @@
 
 * [2주차](/week2/goal.md)
     * [JSX](/week2/jsx.md)
+
