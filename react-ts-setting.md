@@ -560,6 +560,42 @@ if (element) {
 
 </br>
 
+### 추가설정
+
+=> 저장하면 eslint 적용되게 해준다.
+
+`.vscode 폴더 생성`
+
+```bash
+mkdir .vscode
+```
+
+</br>
+
+`.vscode/settings.json 생성 및 작성`
+
+```bash
+cd .vscode
+touch settings.json
+```
+
+```json
+{
+ "editor.rulers": [
+   80
+ ],
+ "editor.codeActionsOnSave": {
+   "source.fixAll.eslint": true
+ },
+ "trailing-spaces.trimOnSave": true
+}
+```
+
+</br>
+
+---
+</br>
+
 ### 13. 실행
 
 **웹 서버 실행**
@@ -574,7 +610,7 @@ npm start
 
 실행이 안되는데??
 
-__static 폴더 생성__
+**static 폴더 생성**
 
 ```.
 Error: ENOENT: no such file or directory,
