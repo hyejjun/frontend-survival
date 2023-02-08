@@ -3,6 +3,7 @@
 * 메가테라 프론트엔드 1주차 강의 노트
 
 * [Git training](git-training.md)
+* [React-ts-parcel-elsint 개발환경 세팅](react-ts-setting.md)
 
 * [1주차](/week1/goal.md)
     * [개발환경](/week1/setting.md)

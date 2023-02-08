@@ -1,6 +1,6 @@
 # React + TypeScript + Parcel + ESLint 프론트엔드 개발환경 세팅
 
-Node.js 가 최신 버전인지 확인한다. 
+Node.js 가 최신 버전인지 확인한다.
 
 ---
 
@@ -8,43 +8,48 @@ Node.js 가 최신 버전인지 확인한다.
 
 ---
 
-<br />
+</br>
 
 ### 1. 작업 폴더 생성
+
 ```bash
 mkdir my-app
 
 cd my-app
 ```
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 2. VS code 켜기
+
 ```bash
 code .
 ```
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 3. npm 프로젝트 생성
+
 ```bash
 npm init -y
 ```
-<br />
+
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 4. .gitignore 생성
+
 ```bash
 touch .gitignore
 ```
@@ -52,8 +57,7 @@ touch .gitignore
 <details>
 <summary>.gitignore 전체 내용</summary>
 
-
-```
+```.
 # Logs
 logs
 *.log
@@ -188,45 +192,49 @@ dist
 
 </details>
 
+</br>
+-> 구글에 "github gitignore node" 라고 검색하면 </br>
+github에서 제공하는 node js 용 예시 .gitignore를 확인 할 수 있다. 이걸 사용하자! </br>
+-> Raw 버튼을 눌러서 텍스트 파일을 전체 복사하고 내 폴더안에 .gitigore에 붙여넣는다. </br>
 
-<br/>
--> 구글에 "github gitignore node" 라고 검색하면 <br/>
-github에서 제공하는 node js 용 예시 .gitignore를 확인 할 수 있다. 이걸 사용하자! <br/>
--> Raw 버튼을 눌러서 텍스트 파일을 전체 복사하고 내 폴더안에 .gitigore에 붙여넣는다. <br/>
-
-<br/>
+</br>
 
 ---
 
-<br/>
+</br>
 
 ### 5. TypeScript 설정
+
 ```bash
 npm i -D typescript
 ```
+
 - devDependencies 에 넣어서 개발환경에서만 사용하겠다는 의미
 
 ```bash
 npx tsc --init
 ```
+
 - tsconfig.json 파일이 생성된다.
 - TypeScript 프로젝트를 어떻게 빌드할지 설정하는 파일이다.
 
-<br/>
+</br>
 
-`tsconfig.json` <br/>
+`tsconfig.json` </br>
+
 - jsx 속성을 변경한다.
 - 16번째 줄에 "jsx": "react-jsx", 로 변경하고 활성화 시킨다.
 
-<br />
+</br>
 
 ---
 
-<br/>
+</br>
 
 ### 6. ESLint 설정
 
 설치 및 실행
+
 ```bash
 npm i -D eslint
 ```
@@ -235,12 +243,10 @@ npm i -D eslint
 npx eslint --init
 ```
 
-
 <details>
 <summary>
-	<strong>ESLint 세팅가이드</strong>
+ <strong>ESLint 세팅가이드</strong>
 </summary>
-
 
 ```
 You can also run this command directly using 'npm init @eslint/config'.
@@ -287,46 +293,48 @@ You can also run this command directly using 'npm init @eslint/config'.
   pnpm**
 
 ```
+
 </details>
 
-
-<br/>
+</br>
 
 `.eslintrc.js`
 
 ```js
 module.exports = {
-	env: {
-		browser: true,
-		es2021: true,
-		jest: true,
-	},
-	settings: {
-		react: {
-			version: 'detect',
-		},
-	},
-	extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'xo'],
-	overrides: [
-		{
-			extends: ['xo-typescript'],
-			files: ['*.ts', '*.tsx'],
-		},
-	],
-	parserOptions: {
-		ecmaVersion: 'latest',
-		sourceType: 'module',
-	},
-	plugins: ['react'],
-	rules: {},
+ env: {
+  browser: true,
+  es2021: true,
+  jest: true,
+ },
+ settings: {
+  react: {
+   version: 'detect',
+  },
+ },
+ extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'xo'],
+ overrides: [
+  {
+   extends: ['xo-typescript'],
+   files: ['*.ts', '*.tsx'],
+  },
+ ],
+ parserOptions: {
+  ecmaVersion: 'latest',
+  sourceType: 'module',
+ },
+ plugins: ['react'],
+ rules: {},
 };
 
 ```
 
 .eslintignore 파일을 생성 후 작성한다.
+
 ```bash
 touch .eslintignore
 ```
+
 `.eslintignore`
 
 ```
@@ -335,93 +343,101 @@ touch .eslintignore
 /.parcel-cache/
 ```
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 7. React 설치
+
 ```bash
 npm i react react-dom
 npm i -D @types/react @types/react-dom
 ```
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 8. 테스팅 도구 설치
+
 ```bash
 npm i -D jest @types/jest @swc/core @swc/jest \
     jest-environment-jsdom \
     @testing-library/react @testing-library/jest-dom
 ```
+
 - jest 라는 테스팅 도구 설치
 - jest랑 swc를 같이 쓰는게 목표
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 9. jest.config.js 파일 작성
+
 - 테스트에서 SWC를 사용한다.
 - js로 ts 그냥 실행 못함. 변환해줘야함. 그거를 여기에 작성.
 
 ```js
 module.exports = {
-	testEnvironment: 'jsdom',
-	setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
-	transform: {
-		'^.+\\.(t|j)sx?$': [
-			'@swc/jest',
-			{
-				jsc: {
-					parser: {
-						syntax: 'typescript',
-						jsx: true,
-						decorators: true,
-					},
-					transform: {
-						react: {
-							runtime: 'automatic',
-						},
-					},
-				},
-			},
-		],
-	},
-	testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
+ testEnvironment: 'jsdom',
+ setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+ transform: {
+  '^.+\\.(t|j)sx?$': [
+   '@swc/jest',
+   {
+    jsc: {
+     parser: {
+      syntax: 'typescript',
+      jsx: true,
+      decorators: true,
+     },
+     transform: {
+      react: {
+       runtime: 'automatic',
+      },
+     },
+    },
+   },
+  ],
+ },
+ testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
 };
 
 ```
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 10. Parcel 설치
+
 ```bash
 npm i -D parcel
 ```
+
 - web / dev 서버를 띄우는 도구
 - Parcel 은 파일 변화를 자동으로 다시 빌드(rebuild) 하고 빠른 모듈 교체를 지원하는 내장 개발용 서버가 있어 빠른 개발이 가능하기에 사용.
 - 진입 파일을 지정하자.
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 11. package.json 수정
+
 프로젝트를 실행하는 명령어를 작성해준다.
+
 ```js
  "scripts": {
     "start": "parcel --port 8080",
@@ -435,10 +451,13 @@ npm i -D parcel
 ```
 
 node 의 경우 처음 실행하는게 main으로 잡아주고 있음
+
 ```js
   "main": "index.js",
 ```
+
 그런데 우리는 웹서버를 띄워줄거라서 source로 바꿔준다.
+
 ```js
   "source": "index.html",
 ```
@@ -448,76 +467,80 @@ node 의 경우 처음 실행하는게 main으로 잡아주고 있음
 
 ```json
 {
-	"name": "react-demo",
-	"version": "1.0.0",
-	"description": "React Application Demo",
-	"source": "./index.html",
-	"scripts": {
-		"start": "parcel --port 8080",
-		"build": "parcel build",
-		"check": "tsc --noEmit",
-		"lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
-		"test": "jest",
-		"coverage": "jest --coverage --coverage-reporters html",
-		"watch:test": "jest --watchAll"
-	},
-	"keywords": [],
-	"author": "hyejjun",
-	"license": "ISC",
-	"devDependencies": {
-		"@swc/core": "^1.3.30",
-		"@swc/jest": "^0.2.24",
-		"@testing-library/jest-dom": "^5.16.5",
-		"@testing-library/react": "^13.4.0",
-		"@types/jest": "^29.4.0",
-		"@types/react": "^18.0.27",
-		"@types/react-dom": "^18.0.10",
-		"@typescript-eslint/eslint-plugin": "^5.49.0",
-		"@typescript-eslint/parser": "^5.49.0",
-		"eslint": "^8.33.0",
-		"eslint-config-xo": "^0.43.1",
-		"eslint-config-xo-typescript": "^0.55.1",
-		"eslint-plugin-react": "^7.32.2",
-		"jest": "^29.4.1",
-		"jest-environment-jsdom": "^29.4.1",
-		"parcel": "^2.8.3",
-		"process": "^0.11.10",
-		"typescript": "^4.9.4"
-	},
-	"dependencies": {
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0"
-	}
+ "name": "react-demo",
+ "version": "1.0.0",
+ "description": "React Application Demo",
+ "source": "./index.html",
+ "scripts": {
+  "start": "parcel --port 8080",
+  "build": "parcel build",
+  "check": "tsc --noEmit",
+  "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
+  "test": "jest",
+  "coverage": "jest --coverage --coverage-reporters html",
+  "watch:test": "jest --watchAll"
+ },
+ "keywords": [],
+ "author": "hyejjun",
+ "license": "ISC",
+ "devDependencies": {
+  "@swc/core": "^1.3.30",
+  "@swc/jest": "^0.2.24",
+  "@testing-library/jest-dom": "^5.16.5",
+  "@testing-library/react": "^13.4.0",
+  "@types/jest": "^29.4.0",
+  "@types/react": "^18.0.27",
+  "@types/react-dom": "^18.0.10",
+  "@typescript-eslint/eslint-plugin": "^5.49.0",
+  "@typescript-eslint/parser": "^5.49.0",
+  "eslint": "^8.33.0",
+  "eslint-config-xo": "^0.43.1",
+  "eslint-config-xo-typescript": "^0.55.1",
+  "eslint-plugin-react": "^7.32.2",
+  "jest": "^29.4.1",
+  "jest-environment-jsdom": "^29.4.1",
+  "parcel": "^2.8.3",
+  "process": "^0.11.10",
+  "typescript": "^4.9.4"
+ },
+ "dependencies": {
+  "react": "^18.2.0",
+  "react-dom": "^18.2.0"
+ }
 }
 ```
+
 </details>
 
-<br/>
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 12. 기본 코드 작성
+
 - `index.html`
+
 ```html
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>React Demo App</title>
+ <meta charset="UTF-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>React Demo App</title>
 </head>
 <body>
-	<div id="root"></div>
-	<p>Hello, world</p>
-	<script type="module" src="./src/main.tsx"></script>
+ <div id="root"></div>
+ <p>Hello, world</p>
+ <script type="module" src="./src/main.tsx"></script>
 </body>
 </html>
 ```
 
 - `src/main.tsx`
+
 ```js
 import ReactDOM from 'react-dom/client';
 
@@ -526,37 +549,58 @@ const App = () => <div>hi nice</div>;
 const element = document.getElementById('root');
 
 if (element) {
-	const root = ReactDOM.createRoot(element);
-	root.render(<App />);
+ const root = ReactDOM.createRoot(element);
+ root.render(<App />);
 }
 ```
 
-<br />
+</br>
 
 ---
 
-<br />
+</br>
 
 ### 13. 실행
 
 **웹 서버 실행**
+
 ```bash
 npm start
 ```
-웹 브라우저로 확인: http://localhost:8080/
 
-<br />
+웹 브라우저로 확인: <http://localhost:8080/>
+
+</br>
+
+실행이 안되는데??
+
+__static 폴더 생성__
+
+```.
+Error: ENOENT: no such file or directory,
+```
+
+npm start를 했는데 이러한 오류가 날 수 있다. </br>
+static 폴더가 없어서 그렇다.
+
+```bash
+mkdir static
+```
+
+폴더를 만들어주면 실행이 되는 것을 확인할 수 있다.
+</br>
 
 **eslint 실행**
+
 ```bash
 npm run lint
 ```
 
 **테스트 파일 작성 후 jest 실행 하는법**
+
 ```bash
 npm test
 
 // 파일 변경 될 때 마다 계속 실행 해줌
 npm watch:test
 ```
-
