@@ -8,8 +8,6 @@ Node.js 가 최신 버전인지 확인한다.
 
 ---
 
-</br>
-
 ### 1. 작업 폴더 생성
 
 ```bash
@@ -18,11 +16,7 @@ mkdir my-app
 cd my-app
 ```
 
-</br>
-
 ---
-
-</br>
 
 ### 2. VS code 켜기
 
@@ -30,11 +24,7 @@ cd my-app
 code .
 ```
 
-</br>
-
 ---
-
-</br>
 
 ### 3. npm 프로젝트 생성
 
@@ -42,11 +32,7 @@ code .
 npm init -y
 ```
 
-</br>
-
 ---
-
-</br>
 
 ### 4. .gitignore 생성
 
@@ -197,11 +183,7 @@ dist
 github에서 제공하는 node js 용 예시 .gitignore를 확인 할 수 있다. 이걸 사용하자! </br>
 -> Raw 버튼을 눌러서 텍스트 파일을 전체 복사하고 내 폴더안에 .gitigore에 붙여넣는다. </br>
 
-</br>
-
 ---
-
-</br>
 
 ### 5. TypeScript 설정
 
@@ -225,11 +207,7 @@ npx tsc --init
 - jsx 속성을 변경한다.
 - 16번째 줄에 "jsx": "react-jsx", 로 변경하고 활성화 시킨다.
 
-</br>
-
 ---
-
-</br>
 
 ### 6. ESLint 설정
 
@@ -298,33 +276,94 @@ You can also run this command directly using 'npm init @eslint/config'.
 
 </br>
 
+### XO 관련 의존성 제거하고, 에어비앤비 관련 의존성 설치.
+
+```bash
+npm uninstall eslint-config-xo \
+    eslint-config-xo-typescript
+
+npm i -D eslint-config-airbnb \
+    eslint-plugin-import \
+    eslint-plugin-react \
+    eslint-plugin-react-hooks \
+    eslint-plugin-jsx-a11y
+```
+
+</br>
+
 `.eslintrc.js`
+
+-> 여러 rules를 추가했다.
 
 ```js
 module.exports = {
- env: {
-  browser: true,
-  es2021: true,
-  jest: true,
- },
- settings: {
-  react: {
-   version: 'detect',
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
   },
- },
- extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime', 'xo'],
- overrides: [
-  {
-   extends: ['xo-typescript'],
-   files: ['*.ts', '*.tsx'],
+  extends: [
+    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
- ],
- parserOptions: {
-  ecmaVersion: 'latest',
-  sourceType: 'module',
- },
- plugins: ['react'],
- rules: {},
+  plugins: [
+    'react',
+    '@typescript-eslint',
+  ],
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  rules: {
+    indent: ['error', 2],
+    'no-trailing-spaces': 'error',
+    curly: 'error',
+    'brace-style': 'error',
+    'no-multi-spaces': 'error',
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'error',
+    'no-whitespace-before-property': 'error',
+    'func-call-spacing': 'error',
+    'space-before-blocks': 'error',
+    'keyword-spacing': ['error', { before: true, after: true }],
+    'comma-spacing': ['error', { before: false, after: true }],
+    'comma-style': ['error', 'last'],
+    'comma-dangle': ['error', 'always-multiline'],
+    'space-in-parens': ['error', 'never'],
+    'block-spacing': 'error',
+    'array-bracket-spacing': ['error', 'never'],
+    'object-curly-spacing': ['error', 'always'],
+    'key-spacing': ['error', { mode: 'strict' }],
+    'arrow-spacing': ['error', { before: true, after: true }],
+    'import/no-extraneous-dependencies': ['error', {
+      devDependencies: [
+        '**/*.test.js',
+        '**/*.test.jsx',
+        '**/*.test.ts',
+        '**/*.test.tsx',
+      ],
+    }],
+    'import/extensions': ['error', 'ignorePackages', {
+      js: 'never',
+      jsx: 'never',
+      ts: 'never',
+      tsx: 'never',
+    }],
+    'react/jsx-filename-extension': [2, {
+      extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    }],
+    'jsx-a11y/label-has-associated-control': ['error', { assert: 'either' }],
+  },
 };
 
 ```
@@ -343,26 +382,41 @@ touch .eslintignore
 /.parcel-cache/
 ```
 
-</br>
-
 ---
 
-</br>
+### 7. VS Code 설정 파일 생성
 
-### 7. React 설치
+=> 저장하면 eslint 적용되게 해준다.
+
+`.vscode 폴더 생성`
 
 ```bash
-npm i react react-dom
-npm i -D @types/react @types/react-dom
+mkdir .vscode
 ```
 
 </br>
 
+`.vscode/settings.json 생성 및 작성`
+
+```bash
+touch .vscode/settings.json
+```
+
+```json
+{
+ "editor.rulers": [
+   80
+ ],
+ "editor.codeActionsOnSave": {
+   "source.fixAll.eslint": true
+ },
+ "trailing-spaces.trimOnSave": true
+}
+```
+
 ---
 
-</br>
-
-### 8. 테스팅 도구 설치
+### 8. 테스팅 도구 [Jest] 설치
 
 ```bash
 npm i -D jest @types/jest @swc/core @swc/jest \
@@ -373,13 +427,7 @@ npm i -D jest @types/jest @swc/core @swc/jest \
 - jest 라는 테스팅 도구 설치
 - jest랑 swc를 같이 쓰는게 목표
 
-</br>
-
----
-
-</br>
-
-### 9. jest.config.js 파일 작성
+### jest.config.js 파일 작성
 
 - 테스트에서 SWC를 사용한다.
 - js로 ts 그냥 실행 못함. 변환해줘야함. 그거를 여기에 작성.
@@ -412,11 +460,16 @@ module.exports = {
 
 ```
 
-</br>
-
 ---
 
-</br>
+### 9. React 설치
+
+```bash
+npm i react react-dom
+npm i -D @types/react @types/react-dom
+```
+
+---
 
 ### 10. Parcel 설치
 
@@ -428,11 +481,7 @@ npm i -D parcel
 - Parcel 은 파일 변화를 자동으로 다시 빌드(rebuild) 하고 빠른 모듈 교체를 지원하는 내장 개발용 서버가 있어 빠른 개발이 가능하기에 사용.
 - 진입 파일을 지정하자.
 
-</br>
-
 ---
-
-</br>
 
 ### 11. package.json 수정
 
@@ -449,6 +498,8 @@ npm i -D parcel
     "watch:test": "jest --watchAll"
   },
 ```
+
+parcel을 사용하기 때문에 진입 파일을 잡아준다.
 
 node 의 경우 처음 실행하는게 main으로 잡아주고 있음
 
@@ -512,11 +563,7 @@ node 의 경우 처음 실행하는게 main으로 잡아주고 있음
 
 </details>
 
-</br>
-
 ---
-
-</br>
 
 ### 12. 기본 코드 작성
 
@@ -554,47 +601,7 @@ if (element) {
 }
 ```
 
-</br>
-
 ---
-
-</br>
-
-### 추가설정
-
-=> 저장하면 eslint 적용되게 해준다.
-
-`.vscode 폴더 생성`
-
-```bash
-mkdir .vscode
-```
-
-</br>
-
-`.vscode/settings.json 생성 및 작성`
-
-```bash
-cd .vscode
-touch settings.json
-```
-
-```json
-{
- "editor.rulers": [
-   80
- ],
- "editor.codeActionsOnSave": {
-   "source.fixAll.eslint": true
- },
- "trailing-spaces.trimOnSave": true
-}
-```
-
-</br>
-
----
-</br>
 
 ### 13. 실행
 
