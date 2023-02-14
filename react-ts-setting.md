@@ -8,7 +8,7 @@ Node.js 가 최신 버전인지 확인한다.
 
 ---
 
-### 1. 작업 폴더 생성
+## 1. 작업 폴더 생성
 
 ```bash
 mkdir my-app
@@ -18,7 +18,7 @@ cd my-app
 
 ---
 
-### 2. VS code 켜기
+## 2. VS code 켜기
 
 ```bash
 code .
@@ -26,7 +26,7 @@ code .
 
 ---
 
-### 3. npm 프로젝트 생성
+## 3. npm 프로젝트 생성
 
 ```bash
 npm init -y
@@ -34,7 +34,7 @@ npm init -y
 
 ---
 
-### 4. .gitignore 생성
+## 4. .gitignore 생성
 
 ```bash
 touch .gitignore
@@ -226,7 +226,7 @@ npx eslint --init
  <strong>ESLint 세팅가이드</strong>
 </summary>
 
-```
+```.
 You can also run this command directly using 'npm init @eslint/config'.
 
 ? How would you like to use ESLint? …
@@ -276,7 +276,7 @@ You can also run this command directly using 'npm init @eslint/config'.
 
 </br>
 
-### XO 관련 의존성 제거하고, 에어비앤비 관련 의존성 설치.
+### XO 관련 의존성 제거하고, 에어비앤비 관련 의존성 설치
 
 ```bash
 npm uninstall eslint-config-xo \
@@ -376,7 +376,7 @@ touch .eslintignore
 
 `.eslintignore`
 
-```
+```.
 /node_modules/
 /dist/
 /.parcel-cache/
@@ -605,7 +605,7 @@ if (element) {
 
 ### 13. 실행
 
-**웹 서버 실행**
+__웹 서버 실행__
 
 ```bash
 npm start
