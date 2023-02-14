@@ -18,3 +18,6 @@
 
 * [2주차](/week2/goal.md)
   * [JSX](/week2/jsx.md)
+
+* [3주차](/week3/goal.md)
+  * [React Component](/week3/react-component.md)
