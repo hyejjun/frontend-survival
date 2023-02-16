@@ -126,15 +126,3 @@ js는 불안함. object가 있는데 뭐가 들었는지 모르니까 props로 �
 부모에서 뭔가를 얻어야 하는 경우
 
 [일급 함수](https://developer.mozilla.org/ko/docs/Glossary/First-class_Function)
-
----
-
-[추가 학습 필요]
-
-Array.filter
-
-Array.reduce
-
-map은 자주 써서 익숙한데 filter와 reduce는 자주 사용하지 않아서 좀 더 연습이 필요할 것 같다.
-
-(+) 강의 실습
