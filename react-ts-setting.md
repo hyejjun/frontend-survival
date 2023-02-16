@@ -589,16 +589,34 @@ node 의 경우 처음 실행하는게 main으로 잡아주고 있음
 - `src/main.tsx`
 
 ```js
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-const App = () => <div>hi nice</div>;
-
-const element = document.getElementById('root');
-
-if (element) {
- const root = ReactDOM.createRoot(element);
- root.render(<App />);
+function App() {
+ return(
+  <div>
+   hello world!
+  </div>
+ )
 }
+
+function main() {
+  const element = document.getElementById('root');
+
+  if (!element) {
+    return;
+  }
+
+  const root = ReactDOM.createRoot(element);
+
+  root.render((
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  ));
+}
+
+main();
 ```
 
 ---
@@ -617,7 +635,7 @@ npm start
 
 실행이 안되는데??
 
-**static 폴더 생성**
+__static 폴더 생성__
 
 ```.
 Error: ENOENT: no such file or directory,
@@ -633,13 +651,13 @@ mkdir static
 폴더를 만들어주면 실행이 되는 것을 확인할 수 있다.
 </br>
 
-**eslint 실행**
+__eslint 실행__
 
 ```bash
 npm run lint
 ```
 
-**테스트 파일 작성 후 jest 실행 하는법**
+__테스트 파일 작성 후 jest 실행 하는법__
 
 ```bash
 npm test
