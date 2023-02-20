@@ -75,6 +75,9 @@ function Form() {
 
 [(공식문서) useEffect가 필요하지 않을걸..?](https://beta.reactjs.org/learn/you-might-not-need-an-effect)
 
+[useEffect 제대로 사용하기](https://velog.io/@jay/you-might-need-useEffect-diet)
+
+
 </br>
 
 ### [상태 관리는 어떻게 하는가?]
