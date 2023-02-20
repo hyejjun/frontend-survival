@@ -40,6 +40,12 @@ npm init -y
 touch .gitignore
 ```
 
+이렇게 터미널에서 하나씩 넣어줄 수 도 있다.
+
+```bash
+echo "/node_modules/" > .gitignore
+```
+
 <details>
 <summary>.gitignore 전체 내용</summary>
 
