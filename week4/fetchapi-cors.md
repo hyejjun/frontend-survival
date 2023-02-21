@@ -67,6 +67,10 @@ const response = fetch(url, {
 
 웹 브라우저의 Same Origin Policy
 
+CORS ERROR
+
+![cors error](./pics/cors.png)
+
 - 웹 페이지(프론트-요청)와 리소스를 요청한 곳(백엔드-REST API 서버)가 서로 다른 출처이면 서버에서 얻은 결과를 사용할 수 없게 막는다. (port 까지 다 따짐)
 
 서버에 요청하고 응답을 받아오는 것까지는 다 된건데 브라우저 단에서 막는 것.
@@ -74,7 +78,8 @@ const response = fetch(url, {
 해결 방법
 
 - 리소스를 주는 서버에서 알려준다.
-- 여기에서 요청했다면 괜찮아.
+- "여기에서 요청했다면 괜찮아." <- 이거를 설정해줘야함
+- 백엔드에서 설정해주는 것
 
 Express에서 CORS 미들웨어를 설치해서 사용한다.
 
@@ -132,6 +137,8 @@ App.tsx 자체에서 async await를 사용하려다가
 이러한 에러가 났었다.
 
 함수형 컴포넌트는 async로 실행될 수 없기 때문...
+
+함수형 컴포넌트에서 비동기 통신을 하려면 useEffect를 사용해야 한다고 함.
 
 main.tsx 에서 fetch 하는걸로 수정했다.
 
