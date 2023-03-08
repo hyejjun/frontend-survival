@@ -32,3 +32,9 @@
   * [React Testing Library](/week5/react-testing-library.md)
   * [MSW](/week5/msw.md)
   * [Playwright](/week5/playwright.md)
+
+* [6주차](/week6/goal.md)
+  * [External Store](/week6/external-store.md)
+  * [TSyringe](/week6/tsytinge.md)
+  * [Redux 따라하기](/week6/redux.md)
+  * [usestore-ts](/week6/usestore-ts.md)

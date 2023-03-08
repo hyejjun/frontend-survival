@@ -35,6 +35,41 @@ web browser가 아닌곳에서는 document 접근이 안되는데 여기서는 �
 
 ---
 
+## describe - context -it
+
+1. describe
+
+- 진행할 테스트에 대해 명시 (주어라고 생각)
+
+```js
+describe('login', ()=>{
+  // 로그인은
+})
+```
+
+2. context
+
+- 테스트 대상의 상황
+- with나 when 으로 시작하게 작성
+
+```js
+context('with correct id and pw',()=>{
+  // id와 pw가 일치하는 상황
+})
+```
+
+3. it
+
+- 테스트 대상의 행동을 심플하게 설명
+
+```js
+it('load an user account',()=>{
+  // 유저의 계정을 로드함
+})
+```
+
+---
+
 ## 실습
 
 `TextField.test.tsx`
