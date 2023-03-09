@@ -273,7 +273,7 @@ function increase() {
   count += 1;
 }
 
-export default function App() {
+export default function Counter() {
   const forceUpdate = useForceUpdate();
 
   const handleClick = () => {
@@ -295,8 +295,34 @@ export default function App() {
 
 비지니스 로직을 hooks형태로 만들어서 분리한다.
 
-그러면 아래 컴포넌트에서는 useState를 사용 하지 않아도 되고
+그러면 아래 컴포넌트에서는 useState를 사용하지 않아도 되고
 
 테스트 코드를 작성할때 증가에 대한 테스트는 비지니스 로직에서만 테스트 하면 된다.
 
 화면단에서는 increase 함수가 호출 되는지만 확인하면 된다.
+
+아예 UI와 비지니스 로직을 파일 분리를 했다.
+
+비지니스 로직에서 살펴보면 저 useState는 값이 변하지 않는다.
+
+-> 강제 상태 업데이트를 위해 생성된 것이기 때문에 특정 값에 한정된 useState가 아니라는 의미이다.
+
+그러면 `forceUpdate` 함수를 `useCallback`으로 작성해주면 최적화가 된다. 값이 바뀔때만 (그런일은 거의 없겠지만..) 변경되게 하자.
+
+`useCallback을 사용해 forceUpdate 함수를 구현`
+
+```tsx
+import { useState, useCallback } from 'react';
+
+export default function useForceUpdate() {
+  const [, setState] = useState({});
+
+  const forceUpdate = useCallback(() => {
+    setState({});
+  }, []);
+
+  return forceUpdate;
+}
+```
+
+이렇게 하면 UI 컴포넌트에서 `forceUpdate`의 함수가 만약 변화한다면 useEffect로 체크하는 로직도 생성할 수 있다.
