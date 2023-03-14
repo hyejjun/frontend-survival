@@ -55,7 +55,7 @@ createBrowserRouter를 이용한다.
 
 이전에 main.tsx에서 브라우저 라우팅 처리해준 부분이 있어서 두번이나 썼다고 에러메시지를 뱉는것이다.
 
-main.tsx에서 그 부분을 제외한다.
+`main.tsx에서 브라우저 라우팅 처리한 부분을 제외한다.`
 
 ---
 
@@ -93,7 +93,6 @@ const routes = [
       { path: '/about', element: <AboutPage /> },
     ],
   },
-
 ];
 
 export default routes;
@@ -140,3 +139,83 @@ children 부분은 react-router-dom 에서 `Outlet`으로 지원받을 수 있�
 
 그래서 App.test.ts -> `routes.test.ts`로 변경해준다.
 
+```ts
+import { render, screen } from '@testing-library/react';
+
+import { createMemoryRouter, RouterProvider } from 'react-router-dom';
+
+import routes from './routes';
+
+const context = describe;
+
+describe('App', () => {
+  function renderRouter(path: string) {
+    const router = createMemoryRouter(routes, { initialEntries: [path] });
+
+    render(<RouterProvider router={router} />);
+  }
+  context('when the current path is "/"', () => {
+    it('renders the home page', () => {
+      renderRouter('/');
+
+      screen.getByText(/Welcome/);
+    });
+  });
+
+  context('when the current path is "/about"', () => {
+    it('renders the about page', () => {
+      renderRouter('/about');
+
+      screen.getByText(/This is test/);
+    });
+  });
+});
+```
+
+---
+
+테스트 코드에서 작성한
+
+`createMemoryRouter`와 `MemoryRouter`는 뭔 차이가 있는걸까??
+
+1. MemoryRouter
+
+지금 위치가 어딘지 알려줘야함.
+
+```tsx
+<MemoryRouter initialEntries={['/about']}>
+  ...
+</MemoryRouter>
+```
+
+현재 url을 알려주기 위해서 테스트 코드에 이렇게 작성했었다.
+
+2. createMemoryRouter
+
+```ts
+const routes = [
+  {
+    element: <Layout />,
+    children: [
+      { path: '/', element: <HomePage /> },
+      { path: '/about', element: <AboutPage /> },
+    ],
+  },
+];
+
+...
+
+const router = createMemoryRouter(routes, { initialEntries: ['/'] });
+
+render(<RouterProvider router={router} />);
+```
+
+주로 테스트에 사용됨... 브라우저가 아닌 환경에서도 React 라우터를 실행하는 데 사용할 수 있음.
+
+아니 근데 뭔 차인지...
+
+눈에 보이는 차이점은 routes 인데..
+
+routes 는 브라우저 객체를 통으로 만들어 주는 녀석..
+
+흠..ㅠㅠㅠ 이거 말고는 모르겠다...
