@@ -44,3 +44,11 @@
   * [Routes](/week7/routes.md)
   * [Router](/week7/router.md)
   * [navigation](/week7/navigation.md)
+
+* [8주차](/week8/goal.md)
+  * [Design system](/week8/design-system.md)
+  * [Style Basics](/week8/style-basics.md)
+  * [CSS in JS](/week8/css-in-js.md)
+  * [Styled-components](/week8/styled-components.md)
+  * [props와 attrs](/week8/props-attrs.md)
+  * [Global Style & Theme](/week8/global-style-theme.md)
