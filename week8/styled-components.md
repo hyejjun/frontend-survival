@@ -109,27 +109,37 @@ export default function Greeting() {
 }
 ```
 
-2. Styled Componenet에 추가로 스타일 입히기
+2. Styled Componenet에 추가로 스타일 입히기, 내부에 있는 element에 스타일 주기
 
 ```jsx
 import styled from 'styled-components';
 
 const Paragraph = styled.p`
- color: #00F;
+  color : #40d83b;
+
+  strong {
+    color: #e218b0;
+  }
 `;
 
-// Paragraph 에다가 추가로 스타일을 입혔다.
 const BigParagraph = styled(Paragraph)`
- font-size: 5rem;
+  font-size: 2rem;
 `;
 
 export default function Greeting() {
- return (
-  <BigParagraph>
-   Hello, world!
-  </BigParagraph>
- );
+  return (
+    <>
+      <Paragraph>
+        Hello,<strong>World!</strong>
+      </Paragraph>
+      
+      <BigParagraph>
+        Hello big world
+      </BigParagraph>
+    </>
+  );
 }
+
 ```
 
 3. 기존 컴포넌트에 스타일 입히기
@@ -140,7 +150,7 @@ export default function Greeting() {
 ```jsx
 import styled from 'styled-components';
 
-function HelloWorld({ className }: React.HTMLAttributes<HTMLElement>) {
+export default function HelloWorld({ className }: React.HTMLAttributes<HTMLElement>) {
  return (
   <p className={className}>
    Hello, world!
@@ -151,6 +161,8 @@ function HelloWorld({ className }: React.HTMLAttributes<HTMLElement>) {
 const Greeting = styled(HelloWorld)`
  color: #00F;
 `;
-
-export default Greeting;
 ```
+
+기존에 있는 styled-components는 클래스를 추가해주는건데 그게 없으니 직접 className 추가하는 것.
+
+주의 할 점은 `export default Greeting;` 이렇게 작성해줘야 한다는 것!

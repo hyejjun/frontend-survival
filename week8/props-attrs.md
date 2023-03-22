@@ -7,30 +7,66 @@ Styled Components는 React 컴포넌트에 넘어온 props에 따라 다른 스�
 ## props 활용하기
 
 ```tsx
-import React from "react";
 import styled, { css } from 'styled-components';
+import { useBoolean } from 'usehooks-ts';
 
-type ButtonProps = {
-  active?: boolean;
-  background?: string;
+type ParagraphProps = {
+  active? : boolean
 }
 
-const StyledButton = styled.button`
-  color: ${(props) => (props.active ? '#F00' : '#888')};
-  background: ${(props) => props.background || "white"};
+const Paragraph = styled.p<ParagraphProps>`
+  color : ${(props) => (props.active ? '#e91717' : '#043bf0')};
+  font-size: 1em;
+
   ${(props) => props.active && css`
     font-weight: bold;
   `}
 `;
 
-function Button({ active, background }) {
+export default function DefaultMain() {
+  const { value: active, toggle } = useBoolean();
+
   return (
-    <StyledButton active={active} background={background} Î>
-      hello world
-    </StyledButton>
+    <div>
+      <Paragraph active={active}>
+        TEST
+      </Paragraph>
+      <button type="button" onClick={toggle}>
+        toggle
+      </button>
+    </div>
   );
 }
 ```
+
+### props를 사용할때는 props의 type을 선언한다.
+
+```tsx
+type AAAProps = {
+  a? : boolean;
+  b? : string;
+}
+```
+
+props가 있을 수도 없을 수도 있기 때문에 변수 뒤에 `?` 붙여준다.
+
+#### 만약 props에 `?`를 안붙이고 선언시에 styled components 만 쓰면 어떻게 될까?
+
+그러면 무조건 이 props를 요구하게 된다.
+
+```tsx
+<StyledButton>hello world</StyledButton>
+```
+
+Error
+
+```.
+Property 'active' is missing in type '{ children: string; }' but required in type
+```
+
+이런식으로 에러가 난다.
+
+</br>
 
 이렇게 props의 값에 따라서 특정 스타일을 잡아줄 수 있다.
 
@@ -105,3 +141,81 @@ render(
   </div>
 );
 ```
+
+- attrs를 props로 잡아주기
+
+```tsx
+import styled, { css } from 'styled-components';
+import { useBoolean } from 'usehooks-ts';
+
+type ButtonProps = {
+  active? : boolean;
+  type? : 'button' | 'submit' | 'reset';
+}
+
+const Button = styled.button.attrs<ButtonProps>((props) => ({
+  type: props.type ?? 'button',
+}))<ButtonProps>`
+  color: ${(props)=>(props.active ? 'red' : 'blue')};
+`;
+
+export default function DefaultMain() {
+  const { value: active, toggle } = useBoolean();
+
+  return (
+    <div>
+      <Button onClick={toggle} active={active}>
+        toggle
+      </Button>
+    </div>
+  );
+}
+```
+
+---
+
+- Button and BigButton 예제
+
+```tsx
+import styled, { css } from 'styled-components';
+import { useBoolean } from 'usehooks-ts';
+
+type ButtonProps = {
+  active? : boolean
+  type? : 'button' | 'submit' | 'reset'
+}
+
+const Button = styled.button.attrs<ButtonProps>((props) => ({
+  type: props.type ?? 'button',
+}))<ButtonProps>`
+  color: blue;
+`;
+
+const BigButton = styled(Button)`
+  ${(props) => props.active && css`
+    color: pink;
+  `}
+`;
+
+export default function Switch() {
+  const { value: active, toggle } = useBoolean();
+
+  return (
+    <div>
+      <Button onClick={toggle} active={active}>
+        toggle
+      </Button>
+      <BigButton onClick={toggle} active={active} type="submit">
+        Big button
+      </BigButton>
+    </div>
+  );
+}
+```
+
+주의할 점!!
+
+BigButton을 사용할때 Button의 props를 사용하는건 아니다.
+
+컴포넌트마다 각기 다른 props값을 내려줘야함. 타입만 같이 쓰는것.
+

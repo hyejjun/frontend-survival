@@ -5,7 +5,7 @@
 >> Hooks를 어떻게 만들었는지 코드를 확인 할 수 있으니 참고해서 Custom Hook을 만들 때 사용할 수 있다.
 
 ```bash
-npm install usehook-ts
+npm install usehooks-ts
 ```
 
 ---
