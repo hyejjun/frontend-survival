@@ -53,7 +53,7 @@ import { Reset } from 'styled-reset';
 export default function App() {
  return (
   <>
-   <Reset />
+   <Reset /> {/*냅다 붙여준다.*/}
    <Greeting />
   </>
  );
@@ -114,7 +114,17 @@ export default GlobalStyle;
 
 2. `font-size: 62.5%`
 
-이거는 약간 꼼수 같은거
+css에서 rem 단위를 많이쓴다. 근데 rem 쓰는게 좀 어려움. 이거는 약간 꼼수 같은거
+
+일단 html 전체에다가 `font-size: 62.5%` 를 잡아준다.
+
+```css
+html{
+  font-size: 62.5%
+}
+```
+
+키우는 순간 전체적으로 다 커진다.
 
 ```css
 html {
@@ -228,6 +238,10 @@ export default function App() {
 }
 ```
 
+이렇게 ThemeProvider로 내려주고
+
+GlobalStyle에서 이 theme을 사용할 수 있게 해보자.
+
 `src/styles/GlobalStyle.ts`
 
 ```ts
@@ -282,9 +296,10 @@ defaultTheme을 가져와서 그거의 type만 뽑아낸다.
 `src/styles/styled.d.ts`
 
 ```ts
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import 'styled-components';
 
-import Theme from './Theme'
+import Theme from './Theme';
 
 declare module 'styled-components' {
  export interface DefaultTheme extends Theme {}

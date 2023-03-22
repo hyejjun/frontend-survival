@@ -285,6 +285,14 @@ You can also run this command directly using 'npm init @eslint/config'.
 ### XO 관련 의존성 제거하고, 에어비앤비 관련 의존성 설치
 
 ```bash
+npm uninstall eslint-config-xo eslint-config-xo-typescript
+
+npm i -D eslint-config-airbnb eslint-plugin-import eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y
+```
+
+<details>
+
+```bash
 npm uninstall eslint-config-xo \
     eslint-config-xo-typescript
 
@@ -294,6 +302,8 @@ npm i -D eslint-config-airbnb \
     eslint-plugin-react-hooks \
     eslint-plugin-jsx-a11y
 ```
+
+</details>
 
 </br>
 
@@ -425,10 +435,18 @@ touch .vscode/settings.json
 ### 8. 테스팅 도구 [Jest] 설치
 
 ```bash
+npm i -D jest @types/jest @swc/core @swc/jest jest-environment-jsdom @testing-library/react @testing-library/jest-dom
+```
+
+<details>
+
+```bash
 npm i -D jest @types/jest @swc/core @swc/jest \
     jest-environment-jsdom \
     @testing-library/react @testing-library/jest-dom
 ```
+
+</details>
 
 - jest 라는 테스팅 도구 설치
 - jest랑 swc를 같이 쓰는게 목표
@@ -441,7 +459,10 @@ npm i -D jest @types/jest @swc/core @swc/jest \
 ```js
 module.exports = {
  testEnvironment: 'jsdom',
- setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+ setupFilesAfterEnv: [
+  '@testing-library/jest-dom/extend-expect'
+  '<rootDir>/src/setupTests.ts',
+  ],
  transform: {
   '^.+\\.(t|j)sx?$': [
    '@swc/jest',
@@ -465,6 +486,10 @@ module.exports = {
 };
 
 ```
+
+`/src/setupTests.ts 생성`
+
+-> 모든 테스트 파일이 거쳐가는 최초의 파일
 
 ---
 
@@ -623,6 +648,14 @@ function main() {
 }
 
 main();
+```
+
+---
+
+### 추가로 설치할 것들
+
+```bash
+npm i usehooks-ts
 ```
 
 ---
