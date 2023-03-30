@@ -49,6 +49,8 @@
   * [Design system](/week8/design-system.md)
   * [Style Basics](/week8/style-basics.md)
   * [CSS in JS](/week8/css-in-js.md)
+    * [CSS Selector](/week8/css-selector.md)
+    * [CSS box model, media query, Flexbox, Grid](/week8/css-box-model.md)
   * [Styled-components](/week8/styled-components.md)
   * [props와 attrs](/week8/props-attrs.md)
   * [Global Style & Theme](/week8/global-style-theme.md)
