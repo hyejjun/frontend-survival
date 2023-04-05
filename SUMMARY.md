@@ -54,3 +54,11 @@
   * [Styled-components](/week8/styled-components.md)
   * [props와 attrs](/week8/props-attrs.md)
   * [Global Style & Theme](/week8/global-style-theme.md)
+
+* [9주차](/week9/goal.md)
+  * [개발 환경 구축하기](/week9/dev-env.md)
+  * [개발](/week9/development.md)
+    * [상품 목록](/week9/products-list.md)
+    * [상품 상세 보기](/week9/product-detail.md)
+    * [장바구니 보기](/week9/cart-line-item.md)
+    * [장바구니에 상품 담기](/week9/order.md)
