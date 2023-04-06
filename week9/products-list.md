@@ -14,7 +14,7 @@
 
 이 두가지를 합친 것이 `페이지` (ProductListPage)에 들어간다.
 
-역할을 나누는것... 
+역할을 나누는것...
 
 `/pages/ProductListPage.tsx`
 
@@ -212,4 +212,57 @@ export default class ApiService {
 export const apiService = new ApiService();
 ```
 
-여기서 
+여기서 API 관련된 것들을 모두 관리할 예정이다.
+
+다른 API들도 여기서 다 관리할 것.
+
+---
+
+## (구현 전) 테스트 파일 작성
+
+테스트를 항상 먼저 작성한다.
+
+이러한 내용으로 구현할 것이라는 것을 명시하고 통과되게끔 만들고 리팩토링을 계속하면 된다.
+
+`/test/product_list_test.ts`
+
+```ts
+Feature('Product list');
+
+Scenario('All products', ({ I }) => {
+  I.amOnPage('/');
+
+  I.click('Products');
+
+  I.see('CBCL 하트자수맨투맨');
+});
+
+Scenario('Category', ({ I }) => {
+  I.amOnPage('/');
+
+  I.click('top');
+
+  I.see('CBCL 하트자수맨투맨');
+  I.dontSee('CBCL 핀턱자수후드');
+
+  I.click('outer');
+
+  I.dontSee('CBCL 하트자수맨투맨');
+  I.see('CBCL 핀턱자수후드');
+
+  I.click('bottom');
+
+  I.dontSee('CBCL 하트자수맨투맨');
+  I.dontSee('CBCL 핀턱자수후드');
+});
+
+Scenario('Visit the product page', ({ I }) => {
+  I.amOnPage('/');
+
+  I.click('Products');
+
+  I.click('CBCL 하트자수맨투맨');
+
+  I.see('편하게 입을 수 있는 맨투맨');
+});
+```
