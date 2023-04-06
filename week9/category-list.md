@@ -21,9 +21,9 @@ import { render } from '../test-helpers';
 import Header from './Header';
 
 // mocking
-// jest.mock('../hooks/useFetchCategories', () => () => ({
-//   categories: [],
-// }));
+jest.mock('../hooks/useFetchCategories', () => () => ({
+  categories: [],
+}));
 
 test('Header', () => {
   // msw
