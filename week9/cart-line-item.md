@@ -321,8 +321,6 @@ export default function Options({ options }: OptionsProps) {
 }
 ```
 
-// TODO :: join 활용법 찾아보기
-
 ---
 
 routes 테스트에 추가
