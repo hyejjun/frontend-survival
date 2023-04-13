@@ -250,11 +250,25 @@ export default function useAccessToken() {
 
 ---
 
-## 토큰의 유효성 확인하기 + 로그아웃
+이렇게 작업을 하면서 테스트를 돌리다가
 
-사이트에 접속하거나 새로고침을 하면 AccessToken의 유효성을 확인한다.
+`routes.test.tsx` 에서 에러가 발생했다.
 
-API를 통해 로그인 토큰이 유효한지 확인하고 유효하지 않다면 폐기된 jwt token 이거나 변조된 것이므로 클라이언트 단에서 로그아웃 처리해준다.
+![/users/me error](./pics/msw-error.png)
+![/session error](./pics/msw-error2.png)
 
-// TODO :: 유효성 확인하는 hooks
-// TODO :: 로그아웃 처리
+에러 메시지를 읽어보니 handelers 에서 정의해주지 않았다고 나와서
+
+`src/mocks/handlers.ts` 에서
+
+```ts
+  rest.post(`${BASE_URL}/session`, (req, res, ctx) => (
+    res(ctx.json({ accessToken: 'ACCESS-TOKEN' }))
+  )),
+
+  rest.get(`${BASE_URL}/users/me`, (req, res, ctx) => (
+    res(ctx.json({ id: '0BV000USR0001', name: 'tester' }))
+  )),
+```
+
+이 두 개를 추가했다.
