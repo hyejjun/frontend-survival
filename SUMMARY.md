@@ -68,5 +68,6 @@
   * [로그인](/week10/login.md)
   * [로그아웃](/week10/logout.md)
   * [회원가입](/week10/signin.md)
-  * [주문목록 & 주문상세](/week10/order-list-detail.md)
+  * [주문목록](/week10/order-list.md)
+  * [주문상세](/week10/order-detail.md)
   
