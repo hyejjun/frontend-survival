@@ -247,14 +247,3 @@ export default function useAccessToken() {
   return { accessToken, setAccessToken };
 }
 ```
-
----
-
-## 토큰의 유효성 확인하기 + 로그아웃
-
-사이트에 접속하거나 새로고침을 하면 AccessToken의 유효성을 확인한다.
-
-API를 통해 로그인 토큰이 유효한지 확인하고 유효하지 않다면 폐기된 jwt token 이거나 변조된 것이므로 클라이언트 단에서 로그아웃 처리해준다.
-
-// TODO :: 유효성 확인하는 hooks
-// TODO :: 로그아웃 처리
