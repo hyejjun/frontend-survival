@@ -272,3 +272,9 @@ export default function useAccessToken() {
 ```
 
 이 두 개를 추가했다.
+
+---
+
+테스트에서 ReferenceError: Request is not defined 오류
+
+setupTest.ts파일에 import 'whatwg-fetch' 추가하면 된다.
