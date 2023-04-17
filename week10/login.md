@@ -278,3 +278,67 @@ export default function useAccessToken() {
 테스트에서 ReferenceError: Request is not defined 오류
 
 setupTest.ts파일에 import 'whatwg-fetch' 추가하면 된다.
+
+---
+
+### 🌟 내가 프로젝트에서 개발할 때랑 다르게 새롭게 알게 된 부분
+
+#### 1. TextBox 컴포넌트를 활용
+
+- id, pw 의 value 와 onChange를 컴포넌트에서 처리함
+- 이 값들은 스토어에서 관리
+
+프로젝트를 진행할때는 useInput을 만들어서 value, onChange, setState 를 관리할 수 있게 했다. 그리고 각각의 상태값을 컴포넌트에서 직접 관리했는데 강의에서는 스토어에서 관리하는 버전을 배울 수 있었다.
+
+이렇게 하니 컴포넌트에서 신경 써야 할 useState (상태 값)이 거의 없어졌다.
+
+#### 2. onSubmit - Action으로 스토어에서 관리
+
+로그인을 하는 상황에서
+
+개인 프로젝트에서는 로그인 API 연결 hook을 불러온 뒤 mutate 로 API 요청했다.
+
+로그인 요청 시 onSubmit 으로 컴포넌트에 있는 id, pw의 상태값을 받아서 onClick 이벤트가 있을 시에 요청했다.
+
+강의에서는 onSumbit 상황에서 store.login() Action을 실행하게 한다.
+
+해당 Action에는 스토어에 있는 id, pw값을 받아서 API 요청하게 작성한다.
+
+#### 3. localStorage 관리 - hook으로 따로 빼기
+
+프로젝트에서는 localStorage 를 등록하는 hooks를 만들어서
+
+로그인 토큰을 받아오면 'token' 이란 이름으로 저장했다.
+
+시간을 지정해놓고 저장해서 일정 시간 이후에 자동으로 삭제되게 하거나 로그아웃 시에 remove localStorage로 직접 삭제 처리했다.
+
+강의에서는 `usehooks-ts`를 사용하여 setAccessToken 기능을 활용할 수 있었다. (기능을 감추기 위해서 hooks로 따로 빼서 정의함)
+
+localStorage 값 - 등록, 수정이 가능하고 필요한 곳에서 값을 부를 수 있다.
+
+플젝때는 수정할 수 있는 기능은 따로 없었는데 이 부분은 새롭게 배울 수 있었다.
+
+#### 4. API 응답으로 받은 로그인 토큰 localStorage 에 저장하는 시점
+
+프로젝트
+
+- react-query를 사용하고 있어서 login 요청이 성공한 경우 onSuccess 함수에서 localStorage set hooks를 이용하여 설정함
+
+강의
+
+- 스토어에서 로그인 API 요청
+- 요청 성공시 스토어에 token 값 저장
+- 로그인 컴포넌트에서 스토어의 accessToken 값이 변경 될 때마다
+- localStorage hooks의 setAccessToken을 사용하여 localStorage 값을 업데이트한다.
+
+#### 5. API 호출시 헤더에 AccessToken (로그인 토큰) 넣어서 보내기
+
+프로젝트
+
+- 컴포넌트에서 localStorage hooks를 이용하여 로그인 토큰 값을 가져옴
+- API 요청시 해당 토큰 값을 포함하여 전달 (함수 인자값으로 전달)
+- 인자값으로 받은 걸 헤더에 대입
+
+강의
+
+- 모든 API를 관리하는 곳에서 로그인 토큰을 넣어서 기본 헤더를 세팅하고 API를 요청할 수 있게함
