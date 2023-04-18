@@ -70,4 +70,7 @@
   * [회원가입](/week10/signin.md)
   * [주문목록](/week10/order-list.md)
   * [주문상세](/week10/order-detail.md)
-  
+
+* [11주차](/week11/goal.md)
+  * [주문하기](/week11/order.md)
+  * [결제하기](/week11/payment.md)
