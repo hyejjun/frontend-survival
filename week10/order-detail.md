@@ -114,6 +114,10 @@ useParams로 url 에 있는 파라메터를 가져온다.
 ### 컴포넌트 생성 - Order
 
 ```tsx
+const STATUS_MESSAGES = {
+  paid: '결제 완료',
+}
+
 type OrderProps = {
   order: OrderDetail;
 };
@@ -130,6 +134,8 @@ export default function Order({ order }: OrderProps) {
         <dd>{order.orderedAt}</dd>
         <dt>주문 코드</dt>
         <dd>{order.id}</dd>
+        <dt>처리 상태</dt>
+        <dd>{STATUS_MESSAGE[order.status]}</dd>
       </dl>
       <Table
         lineItems={order.lineItems}
@@ -161,3 +167,39 @@ CartView 컴포넌트는 Table 컴포넌트 그 자체를 사용한다.
 - 컴포넌트 재사용 해야하는 것은 알고 있지만 어떤 부분을 어떻게 활용해야할지 몰라서 극히 일부분만 재사용했었다.
 
 - 컴포넌트 구조를 전체적으로 볼 줄 알고 중복되는 부분이 발견되면 작게라도 나누는 연습이 필요하다.
+
+2. 비정제된 string 처리 - Computed Property 활용해서 처리하기
+
+- API 응답으로 상품 처리 상태 값을 받았을 때 개발자들끼리는 서로 약속한게 있으니 주문 처리 상태가 paid 로 와도 결제 완료 상태군... 하고 처리하겠지만 유저는 뭘 의미하는건지 모르기 때문에 정제후 화면에 출력해줘야 한다.
+
+- 결제 상태별 메시지는 [아임포트의 가이드](https://faq.portone.io/ed2439aa-b0bb-421e-8878-a1384e55c261#ed2439aa-b0bb-421e-8878-a1384e55c261)를 참고했다.
+
+```tsx
+const STATUS_MESSAGES = {
+  ready: '미결제',
+  paid: '결제 완료',
+  cancelled: '결제 취소',
+  falied: '결제 실패'
+}
+
+return(
+  <dt>처리 상태</dt>
+  <dd>{STATUS_MESSAGE[order.status]}</dd>
+)
+```
+
+#### Computed Property : JS ES6 문법
+
+객체의 key값을 표현식(변수, 함수 등)을 통해 지정하는 문법이다.
+
+Object[key] 형태로 사용한다.
+
+typeof key 는 string 이다. (key should be always string)
+
+객체에서 지정한 key에 해당하는 value를 리턴받을 수 있게 한다.
+
+보통 Object 안에 있는 데이터에 접근할 때 STATUS_MESSAGES.ready 이런식으로 `.` 을 이용한다.
+
+하지만 Object[key] 의 대괄호를 이용해서 배열에서 데이터를 받아오는 것처럼 사용이 가능하다.
+
+강의에서처럼 동적으로 사용이 가능함.
