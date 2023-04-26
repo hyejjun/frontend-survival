@@ -74,3 +74,8 @@
 * [11주차](/week11/goal.md)
   * [주문하기](/week11/order.md)
   * [결제하기](/week11/payment.md)
+
+* [12주차](/week12/goal.md)
+  * [관리자페이지](/week12/admin-site.md)
+    * [로그인, 사용자 목록](/week12/admin-user-management.md)
+    * [카테고리 관리](/week12/admin-category-management.md)
