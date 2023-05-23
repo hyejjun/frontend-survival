@@ -128,6 +128,10 @@ export default class LoginFormStore {
       });
 
       this.setAccessToken(accessToken);
+      /*
+      여기서 응답받은 localStorage에 바로 넣는게 아니라 해당 스토어에 값을 저장한다. 
+      이 저장한 값을 LoginForm.tsx 에서 localStorage 에 넣어주는 작업이 필요하다.
+      */
     } catch (e) {
       this.setError();
     }
