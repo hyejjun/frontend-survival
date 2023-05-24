@@ -79,4 +79,5 @@
   * [관리자페이지](/week12/admin-site.md)
     * [로그인, 사용자 목록](/week12/admin-user-management.md)
     * [카테고리 관리](/week12/admin-category-management.md)
-  * [SWR](/week12/swr.md)
+    * [주문 관리](/week12/admin-order-management.md)
+    * [상품 관리](/week12/admin-product-management.md)
